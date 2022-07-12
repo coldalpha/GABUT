@@ -13,15 +13,47 @@
   </head>
   <body>
     <div class="container m-5 d-flex justify-content-center">
-      <div class="card shadow-lg p-3 mb-5 bg-white rounded">
+      <div class="card shadow-lg p-3 mb-5 bg-white rounded mx-5 w-50">
         <div class="card-body m-3">
-          <h1 class="card-title mb-3">Hilang Spasi</h1>
-          <input class="input-group" id="no_bpjs" onchange="hapusSpasi()" />
-          <p id="hasil" class="mt-2"></p>
+          <label for="no_bpjs" class="form-label">Hapus Spasi</label>
+          <input
+            class="form-control form-control-lg"
+            id="no_bpjs"
+            type="text"
+            placeholder="Masukan Angka"
+            aria-label=".form-control-lg example"
+            onchange="hapusSpasi()"
+          />
+          <p id="hasil" class="m-2">0000000000000000</p>
+          <div class="form-floating mt-2">
+            <textarea
+              class="form-control"
+              placeholder="Leave a comment here"
+              id="floatingTextarea2"
+              style="height: 100px"
+            ></textarea>
+            <label for="floatingTextarea2">CATATAN</label>
+          </div>
+        </div>
+      </div>
+      <div class="card shadow-lg p-3 mb-5 bg-white rounded w-50">
+        <div class="card-body m-3">
+          <h1 class="card-title mb-3">Catatan SRB</h1>
+          <p class="mt-2" id="srb90">
+            Masa berlaku rujukan habis sudah 90 hari, kondisi belum stabil,
+            <br />
+            KONTROL ULANG: 16/07/2022
+          </p>
+          <hr />
+          <p class="mt-2" id="postOp">
+            Post opname SKO sudah digunakan 1x,kondisi belum stabil,
+            <br />
+            KONTROL ULANG: /06/2022
+          </p>
         </div>
       </div>
     </div>
-
+    <div class="container m-5 d-flex justify-content-center"></div>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
@@ -29,6 +61,19 @@
     ></script>
   </body>
   <script>
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, "0");
+    var mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
+    var yyyy = today.getFullYear();
+
+    today = dd + "/" + mm + "/" + yyyy;
+    document.getElementById("srb90").innerHTML =
+      "Masa berlaku rujukan habis sudah 90 hari, kondisi belum stabil,<br>KONTROL ULANG: " +
+      today;
+    document.getElementById("postOp").innerHTML =
+      "Post opname SKO sudah digunakan 1x,kondisi belum stabil,,<br>KONTROL ULANG: " +
+      today;
+    console.log(today);
     function zeroPad(num, numZeros) {
       var n = Math.abs(num);
       var zeros = Math.max(0, numZeros - Math.floor(n).toString().length);
